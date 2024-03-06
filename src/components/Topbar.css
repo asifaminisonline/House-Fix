@@ -1,0 +1,19 @@
+.topbar-parent {
+  background-color: #023e8a;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 55px;
+}
+.topbar-right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.topbar-right h3 {
+  margin: 0px 20px;
+}
+.topbar-left h3 {
+  margin-left: 20px;
+}
