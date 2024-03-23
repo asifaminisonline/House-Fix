@@ -1,8 +1,87 @@
-import { Link } from "react-router-dom/dist";
+// import { Link } from "react-router-dom/dist";
+// import { products } from "../Data";
+// import "./ProductComponent.css";
+
+// function ProductsComponent({ selectedColor }) {
+//   const tagColors = [
+//     "#007bff",
+//     "#28a745",
+//     "#dc3545",
+//     "#ffc107",
+//     "#17a2b8",
+//     "#6610f2",
+//     "#20c997",
+//     "#6c757d",
+//     "#fd7e14",
+//     "#007bff",
+//   ];
+//   const slicedProducts = products.slice(0, 4);
+//   return (
+//     <>
+//       <div className="top-section">
+//         <h1>
+//           <span style={{ backgroundColor: selectedColor }}>Products</span>
+//         </h1>
+//         <p style={{ textAlign: "center", width: "900px", margin: "auto" }}>
+//           Lorem Ipsum is simply dummy text of the printing and typesetting
+//           industry. Lorem Ipsum has been the industry's standard dummy text ever
+//           since the 1500s,
+//         </p>
+//       </div>
+//       <div className="Grand-parent">
+//         {slicedProducts.map((product, index) => (
+//           <div className="product-card" key={index}>
+//             <div className="product-image-container">
+//               <img
+//                 className="product-image"
+//                 src={product.imageURL}
+//                 alt={product.title}
+//               />
+//               <span
+//                 className="product-tag"
+//                 style={{ backgroundColor: tagColors[index % tagColors.length] }}
+//               >
+//                 {product.tag}
+//               </span>
+//             </div>
+//             <div className="product-details">
+//               <h2 className="product-title" style={{ color: selectedColor }}>
+//                 {product.title}
+//               </h2>
+//               <p className="product-description">{product.description}</p>
+//               <div className="product-buttons">
+//                 <button className="product-button">{product.buttonLink}</button>
+//               </div>
+//             </div>
+//           </div>
+//         ))}
+//       </div>
+//       <div className="view-more-products">
+//         <Link to="/products">
+//           <button
+//             className=" view-more"
+//             style={{ backgroundColor: selectedColor }}
+//           >
+//             More Products
+//           </button>
+//         </Link>
+//       </div>
+//     </>
+//   );
+// }
+
+// export default ProductsComponent;
+
+import React from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { products } from "../Data";
 import "./ProductComponent.css";
 
 function ProductsComponent({ selectedColor }) {
+  const isLoggedIn = useSelector((state) => state.login.user !== null);
+  const navigate = useNavigate();
+
   const tagColors = [
     "#007bff",
     "#28a745",
@@ -15,6 +94,15 @@ function ProductsComponent({ selectedColor }) {
     "#fd7e14",
     "#007bff",
   ];
+  const slicedProducts = products.slice(0, 4);
+
+  const handleViewMoreClick = () => {
+    if (isLoggedIn) {
+      navigate("/products");
+    } else {
+      navigate("/sign-up");
+    }
+  };
 
   return (
     <>
@@ -29,7 +117,7 @@ function ProductsComponent({ selectedColor }) {
         </p>
       </div>
       <div className="Grand-parent">
-        {products.map((product, index) => (
+        {slicedProducts.map((product, index) => (
           <div className="product-card" key={index}>
             <div className="product-image-container">
               <img
@@ -57,14 +145,13 @@ function ProductsComponent({ selectedColor }) {
         ))}
       </div>
       <div className="view-more-products">
-        <Link to="/products">
-          <button
-            className=" view-more"
-            style={{ backgroundColor: selectedColor }}
-          >
-            More Products
-          </button>
-        </Link>
+        <button
+          className="view-more"
+          style={{ backgroundColor: selectedColor }}
+          onClick={handleViewMoreClick}
+        >
+          View More
+        </button>
       </div>
     </>
   );

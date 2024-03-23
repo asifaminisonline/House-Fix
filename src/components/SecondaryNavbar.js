@@ -3,14 +3,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./Navbar.css";
 
-function Navbar({
-  scrollToBanner,
-  scrollToAbout,
-  scrollToServiceList,
-  scrollToProducts,
-  scrollToContact,
-  selectedColor,
-}) {
+function Navbar(selectedColor) {
   const items = useSelector((state) => state.cart);
   return (
     <div className="nav-parent">
@@ -22,32 +15,23 @@ function Navbar({
       </div>
       <div className="nav-links">
         <li>
-          <button style={{ color: selectedColor }} onClick={scrollToBanner}>
-            Home
-          </button>
+          <Link to="/">
+            <button style={{ color: selectedColor }}>Home</button>
+          </Link>
         </li>
         <li>
-          <button style={{ color: selectedColor }} onClick={scrollToAbout}>
-            About
-          </button>
+          <Link to="/about">
+            <button style={{ color: selectedColor }}>About</button>
+          </Link>
         </li>
         <li>
-          <button
-            style={{ color: selectedColor }}
-            onClick={scrollToServiceList}
-          >
-            Services
-          </button>
+          <button style={{ color: selectedColor }}>Services</button>
         </li>
         <li>
-          <button style={{ color: selectedColor }} onClick={scrollToProducts}>
-            Products
-          </button>
+          <button style={{ color: selectedColor }}>Products</button>
         </li>
         <li>
-          <button style={{ color: selectedColor }} onClick={scrollToContact}>
-            Contact
-          </button>
+          <button style={{ color: selectedColor }}>Contact</button>
         </li>
       </div>
       <div className="login">

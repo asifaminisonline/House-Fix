@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import SecondaryNavbar from "../components/SecondaryNavbar";
 import Bluespace from "../components/Bluespace";
 import { products } from "../Data";
 import { Link } from "react-router-dom";
@@ -39,7 +39,7 @@ function Products({ selectedColor }) {
   };
 
   const clearFilters = () => {
-    setCategoryFilters([""]); // Reset category filters to include "All"
+    setCategoryFilters([""]);
     setPriceFilter("");
     setColorFilter("");
     setRatingFilter("");
@@ -53,7 +53,7 @@ function Products({ selectedColor }) {
   };
   return (
     <>
-      <Navbar />
+      <SecondaryNavbar />
 
       <div className="product-page-container">
         <div className="filter-section">

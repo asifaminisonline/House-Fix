@@ -6,12 +6,12 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import Products from "./pages/Products";
 import Contact from "./pages/Contact";
-import SignUp from "./pages/SignUp";
-import Login from "./pages/Login";
 import ProductDetails from "./components/ProductDetails";
 import { Provider } from "react-redux";
 import store from "./store/store";
 import Cart from "./components/Cart";
+import SignUp from "./components/SignUp";
+import Login from "./components/Login";
 
 function App() {
   return (
@@ -28,6 +28,8 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/products/:productId" element={<ProductDetails />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/sign-up" element={<SignUp />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </Router>
       </Provider>
