@@ -39,6 +39,7 @@ function Login() {
         <input
           type="email"
           name="email"
+          required
           placeholder="Email"
           value={formData.email}
           onChange={handleChange}
@@ -46,6 +47,7 @@ function Login() {
         />
         <input
           type="password"
+          required
           name="password"
           placeholder="Password"
           value={formData.password}
